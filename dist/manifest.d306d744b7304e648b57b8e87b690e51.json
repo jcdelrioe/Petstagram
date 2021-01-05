@@ -1,0 +1,43 @@
+{
+  "icons": [
+    {
+      "src": "/icon_512x512.e2ae0aae826f176944c06c4a81542c1e.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_384x384.196c396e31ec011f575b0a56053ab982.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_256x256.654e5e867c34cd96c69ffbe297fbd2a1.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_192x192.6e46dffb91b920ae0fa4da5ea06910da.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_128x128.b27081e728855577f76912cd715a6eb8.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_96x96.2f8d1e84ef2dd3ce05491fcdd081a29f.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Petstagram - Tu app de fotos de mascotas",
+  "short_name": "Petstagram - Tu app de fotos de mascotas",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "shortname": "Petstagram 🐶",
+  "description": "Con Petstagram puedes encontrar fotos de animales domésticos muy fácilmente",
+  "background_color": "#fff",
+  "theme_color": "#b1a"
+}

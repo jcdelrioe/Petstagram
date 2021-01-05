@@ -1,1 +1,27 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Petstagram</title></head><body><div id="app"></div><script src="app.bundle.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petstagram</title>
+<meta name="theme-color" content="#b1a" /><link rel="manifest" href="/manifest.d306d744b7304e648b57b8e87b690e51.json" /></head>
+<body>
+  <div id="app"></div>
+  <noscript>
+    <h3>Esta app necesita Javascript para anunciar</h3>
+  </noscript>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('SW registrado')
+        })
+        .catch(registrationError => {
+          console.log('SW error', registrationError)
+        })
+      })
+    }
+  </script>
+<script src="/app.bundle.js"></script></body>
+</html>

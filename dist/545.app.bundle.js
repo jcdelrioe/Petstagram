@@ -1,0 +1,1 @@
+(self.webpackChunkpetstagram=self.webpackChunkpetstagram||[]).push([[545],{545:(e,t,a)=>{"use strict";a.r(t),a.d(t,{default:()=>s});var n=a(7294);const s=function(){return n.createElement("h1",null,"Esta página no existe! ☹")}}}]);
