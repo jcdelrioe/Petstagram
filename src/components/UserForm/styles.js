@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Form = styled.form`
   padding: 16px 0;
-`;
+`
 
 export const Input = styled.input`
   border: 1px solid #ccc;
@@ -14,15 +14,15 @@ export const Input = styled.input`
   &[disabled] {
     opacity: 0.3;
   }
-`;
+`
 
 export const Title = styled.h2`
   font-size: 16px;
   font-weight: 500;
   padding: 8px 0;
-`;
+`
 
 export const Error = styled.span`
   font-size: 14px;
   color: red;
-`;
+`

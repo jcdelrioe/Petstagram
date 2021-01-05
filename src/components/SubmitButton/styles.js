@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Button = styled.button`
   background: #8d00ff;
@@ -11,4 +11,4 @@ export const Button = styled.button`
   &[disabled] {
     opacity: 0.3;
   }
-`;
+`

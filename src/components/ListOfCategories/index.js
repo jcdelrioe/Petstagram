@@ -1,47 +1,47 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Category } from "../Category";
-import { List, Item } from "./styles";
+import React, { Fragment, useState, useEffect } from 'react'
+import { Category } from '../Category'
+import { List, Item } from './styles'
 
-function useCategoriesData() {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
+function useCategoriesData () {
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(function () {
-    setLoading(true);
+    setLoading(true)
     window
-      .fetch("https://petstagram-server.vercel.app/categories")
+      .fetch('https://petstagram-server.vercel.app/categories')
       .then((res) => res.json())
       .then((response) => {
-        setCategories(response);
-        setLoading(false);
-      });
-  }, []);
+        setCategories(response)
+        setLoading(false)
+      })
+  }, [])
 
-  return { categories, loading };
+  return { categories, loading }
 }
 
 const ListOfCategoriesComponent = () => {
-  const { categories, loading } = useCategoriesData();
-  const [showFixed, setShowFixed] = useState(false);
+  const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
 
   useEffect(
     function () {
       const onScroll = (e) => {
-        const newShowFixed = window.scrollY > 200;
-        showFixed !== newShowFixed && setShowFixed(newShowFixed);
-      };
+        const newShowFixed = window.scrollY > 200
+        showFixed !== newShowFixed && setShowFixed(newShowFixed)
+      }
 
-      document.addEventListener("scroll", onScroll);
+      document.addEventListener('scroll', onScroll)
 
-      return () => document.removeEventListener("scroll", onScroll);
+      return () => document.removeEventListener('scroll', onScroll)
     },
     [showFixed]
-  );
+  )
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
       {loading ? (
-        <Item key="loading">
+        <Item key='loading'>
           <Category />
         </Item>
       ) : (
@@ -52,7 +52,7 @@ const ListOfCategoriesComponent = () => {
         ))
       )}
     </List>
-  );
+  )
 
   // if (loading) {
   //   return 'Cargando...'
@@ -63,7 +63,7 @@ const ListOfCategoriesComponent = () => {
       {renderList()}
       {showFixed && renderList(true)}
     </>
-  );
-};
+  )
+}
 
-export const ListOfCategories = React.memo(ListOfCategoriesComponent);
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)

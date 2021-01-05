@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://petstagram.jcdelrioe.vercel.app/",
+  "chromeWebSecurity": false,
+  "viewportWidth": 500,
+  "viewportHeight": 800
+}

@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { fadeIn } from "../../styles/animation";
+import styled, { css } from 'styled-components'
+import { fadeIn } from '../../styles/animation'
 
 export const List = styled.ul`
   display: flex;
@@ -26,8 +26,8 @@ export const List = styled.ul`
     `}
   &::-webkit-scrollbar {
     display: none;
-`;
+`
 
 export const Item = styled.li`
   padding: 0 1px;
-`;
+`

@@ -15,73 +15,72 @@
 if (!self.define) {
   const singleRequire = name => {
     if (name !== 'require') {
-      name = name + '.js';
+      name = name + '.js'
     }
-    let promise = Promise.resolve();
+    let promise = Promise.resolve()
     if (!registry[name]) {
-      
-        promise = new Promise(async resolve => {
-          if ("document" in self) {
-            const script = document.createElement("script");
-            script.src = name;
-            document.head.appendChild(script);
-            script.onload = resolve;
-          } else {
-            importScripts(name);
-            resolve();
-          }
-        });
-      
+      promise = new Promise(async resolve => {
+        if ('document' in self) {
+          const script = document.createElement('script')
+          script.src = name
+          document.head.appendChild(script)
+          script.onload = resolve
+        } else {
+          importScripts(name)
+          resolve()
+        }
+      })
     }
     return promise.then(() => {
       if (!registry[name]) {
-        throw new Error(`Module ${name} didn’t register its module`);
+        throw new Error(`Module ${name} didn’t register its module`)
       }
-      return registry[name];
-    });
-  };
+      return registry[name]
+    })
+  }
 
   const require = (names, resolve) => {
     Promise.all(names.map(singleRequire))
-      .then(modules => resolve(modules.length === 1 ? modules[0] : modules));
-  };
-  
+      .then(modules => resolve(modules.length === 1 ? modules[0] : modules))
+  }
+
   const registry = {
     require: Promise.resolve(require)
-  };
+  }
 
   self.define = (moduleName, depsNames, factory) => {
     if (registry[moduleName]) {
       // Module is already loading or loaded.
-      return;
+      return
     }
     registry[moduleName] = Promise.resolve().then(() => {
-      let exports = {};
+      const exports = {}
       const module = {
         uri: location.origin + moduleName.slice(1)
-      };
+      }
       return Promise.all(
         depsNames.map(depName => {
-          switch(depName) {
-            case "exports":
-              return exports;
-            case "module":
-              return module;
+          switch (depName) {
+            case 'exports':
+              return exports
+            case 'module':
+              return module
             default:
-              return singleRequire(depName);
+              return singleRequire(depName)
           }
         })
       ).then(deps => {
-        const facValue = factory(...deps);
-        if(!exports.default) {
-          exports.default = facValue;
+        const facValue = factory(...deps)
+        if (!exports.default) {
+          exports.default = facValue
         }
-        return exports;
-      });
-    });
-  };
+        return exports
+      })
+    })
+  }
 }
-define("./service-worker.js",['./workbox-91be3e2e'], function (workbox) { 'use strict';
+define('./service-worker.js', ['./workbox-91be3e2e'], function (workbox) {
+  'use strict'
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -97,9 +96,9 @@ define("./service-worker.js",['./workbox-91be3e2e'], function (workbox) { 'use s
 
   self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
-      self.skipWaiting();
+      self.skipWaiting()
     }
-  });
+  })
   /**
    * The precacheAndRoute() method efficiently caches and responds to
    * requests for URLs in the manifest.
@@ -107,34 +106,33 @@ define("./service-worker.js",['./workbox-91be3e2e'], function (workbox) { 'use s
    */
 
   workbox.precacheAndRoute([{
-    "url": "/app.bundle.js",
-    "revision": "ca902a2363a809aed60d0ae7e4813c43"
+    url: '/app.bundle.js',
+    revision: 'ca902a2363a809aed60d0ae7e4813c43'
   }, {
-    "url": "/src_pages_Detail_js.app.bundle.js",
-    "revision": "ec5d3241b6b60e9861dba3af87104feb"
+    url: '/src_pages_Detail_js.app.bundle.js',
+    revision: 'ec5d3241b6b60e9861dba3af87104feb'
   }, {
-    "url": "/src_pages_Favs_js.app.bundle.js",
-    "revision": "c5bcc221ac57efe65c17ca4d8d1eb303"
+    url: '/src_pages_Favs_js.app.bundle.js',
+    revision: 'c5bcc221ac57efe65c17ca4d8d1eb303'
   }, {
-    "url": "/src_pages_NotFound_js.app.bundle.js",
-    "revision": "174fe90c3330d31e0c36d629a6638b1c"
+    url: '/src_pages_NotFound_js.app.bundle.js',
+    revision: '174fe90c3330d31e0c36d629a6638b1c'
   }, {
-    "url": "/src_pages_NotRegisteredUser_js.app.bundle.js",
-    "revision": "ddd9968503892e7e238902f8e58ac23b"
+    url: '/src_pages_NotRegisteredUser_js.app.bundle.js',
+    revision: 'ddd9968503892e7e238902f8e58ac23b'
   }, {
-    "url": "/src_pages_User_js.app.bundle.js",
-    "revision": "e20b5f3427b12153ab33b0db2d2a4841"
+    url: '/src_pages_User_js.app.bundle.js',
+    revision: 'e20b5f3427b12153ab33b0db2d2a4841'
   }, {
-    "url": "/vendors-node_modules_intersection-observer_intersection-observer_js.app.bundle.js",
-    "revision": "f8904a4edd664ed0520722de0834d4b3"
-  }], {});
+    url: '/vendors-node_modules_intersection-observer_intersection-observer_js.app.bundle.js',
+    revision: 'f8904a4edd664ed0520722de0834d4b3'
+  }], {})
   workbox.registerRoute(/https:\/\/(res.cloudinary.com|images.unsplash.com)/, new workbox.CacheFirst({
-    "cacheName": "images",
+    cacheName: 'images',
     plugins: []
-  }), 'GET');
+  }), 'GET')
   workbox.registerRoute(/https:\/\/petstagram-server.jcdelrioe.vercel.app/, new workbox.NetworkFirst({
-    "cacheName": "api",
+    cacheName: 'api',
     plugins: []
-  }), 'GET');
-
-});
+  }), 'GET')
+})
